@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/logincss.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>The Official Tourist Website of VietNam</title>
+</head>
+
+<body style="background-color: rgba(137, 43, 226, 0.562);">
+    <canvas id="canvas" width="400" height="400" draggable="true" ondragstart="drag(event)"></canvas>
+
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+            <div class="login-form">
+                <form onsubmit="return Function(Check)">
+                <div class="sign-in-htm">
+                  <form>
+                    <div class="group">
+                        <label for="user"  class="label">Username</label>
+
+                        <input type="email" class="input" id="email"required>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" data-type="password" required>
+                    </div>
+                    <div class="group">
+                        <input value="lsRememberMe" id="rememberMe" type="checkbox" class="check" checked>
+                        <label for="rememberMe"><span class="icon"></span> Keep me Signed in</label>
+                    </div>
+                    <div class="group">
+                        <a href="index.html"><input type="submit" class="button" value="Sign In" onclick="lsRememberMe()"></a>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Forgot Password ?</a> | <a href="index.html"> HOME PAGE </a>
+                    </div>
+                </div>
+            </form>
+
+            <form>
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <input id="user" type="text" class="input" required="">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" data-type="password" required>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Email</label>
+                        <input id="pass" type="email" class="input" data-type="password" required>
+                    </div>  
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign Up">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <label for="tab-1">Already Member?</a> | <a href="index.html"> HOME PAGE </a>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <div id="div2">Move the automatic clock here to shorten the Form</div>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</body>
+</html>
+<script type="text/javascript">
+const rmCheck = document.getElementById("rememberMe"),
+    emailInput = document.getElementById("email");
+
+if (localStorage.checkbox && localStorage.checkbox !== "") {
+  rmCheck.setAttribute("checked", "checked");
+  emailInput.value = localStorage.username;
+} else {
+  rmCheck.removeAttribute("checked");
+  emailInput.value = "";
+}
+
+function lsRememberMe() {
+  if (rmCheck.checked && emailInput.value !== "") {
+    localStorage.username = emailInput.value;
+    localStorage.checkbox = rmCheck.value;
+  } else {
+    localStorage.username = "";
+    localStorage.checkbox = "";
+  }
+}
+</script>
+<script>
+    var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+ctx.strokeStyle = '#28d1fa';
+
+ctx.lineWidth = 17;
+ctx.lineCap = 'round';
+ctx.shadowBlur = 15;
+ctx.shadowColor = '#28d1fa';
+
+function degToRad(degree) {
+  var factor = Math.PI/180;
+  return degree*factor;
+}
+
+function renderTime() {
+  
+  var now = new Date();
+  var today = now.toDateString();
+  var time = now.toLocaleTimeString();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var milliseconds = now.getMilliseconds();
+  var newSeconds = seconds+ (milliseconds/1000);
+  
+  // Background
+  gradient = ctx.createRadialGradient(200,200,5,200,200,300);
+  gradient.addColorStop(0,'#09303a');
+  gradient.addColorStop(1, '#000000');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0,0,400,400);
+  
+  // Hours
+  ctx.beginPath();
+  ctx.arc(200, 200, 170, degToRad(270), degToRad((hours*30)-90));
+  ctx.stroke();
+  
+  // Minutes
+   ctx.beginPath();
+  ctx.arc(200, 200, 140, degToRad(270), degToRad((minutes*6)-90));
+  ctx.stroke();
+  // Seconds
+   ctx.beginPath();
+  ctx.arc(200, 200, 110, degToRad(270), degToRad((newSeconds*6)-90));
+  ctx.stroke();
+  // Date 
+  ctx.font = "20px Helvetica";
+  ctx.fillStyle = '#28d1fa';
+  ctx.fillText(today, 140, 200);
+  
+  // Time
+  ctx.font = "15px Helvetica";
+  ctx.fillStyle = '#28d1fa';
+  ctx.fillText(time, 140, 230);
+  
+}
+setInterval(renderTime, 40);
+</script>
+<script>
+    function allowDrop(ev) {
+    ev.preventDefault();
+    }
+
+    function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    document.getElementById("#div2").innerText = "";
+}
+</script>

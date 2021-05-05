@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts/vnithufapfan.ttf">
+    <link rel="stylesheet" href="app.js">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="css/placecss.css">
+    <title>The Official Tourist Website of VietNam</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            background-image: url(img/1st-section.jpg);
+            background-size: 100% 120%;
+        }
+        video{
+            max-width: 100%;
+            margin-top: 20px;
+            margin-left: 300px;
+        }
+        #VN{
+                color: #ff3300;
+                font-size: 150px;
+            }
+        .content1{
+            font-size: 100px;
+            color: #ffffff;
+            text-align: center;
+            font-style: bold;
+            font-family: VNI;
+        }
+      @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+        .sidebar {
+            position: fixed;
+            float: left;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #042331;
+            transition: all .5s ease;
+        }
+        .sidebar header {
+            font-size: 22px;
+            color: white;
+            line-height: 70px;
+            text-align: center;
+            background: #063146;
+            user-select: none;
+        }
+      .sidebar ul a{
+            text-decoration: none;
+            display: block;
+            height: 100%;
+            width: 100%;
+            line-height: 65px;
+            font-size: 20px;
+            color: white;
+            padding-left: 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid black;
+            border-top: 1px solid rgba(255,255,255,.1);
+            transition: .4s;
+        }
+        ul li:hover a{
+            padding-left: 50px;
+        }
+        .sidebar ul a i{
+            margin-right: 16px;
+        }
+        #check{
+            display: none;
+        }
+        label #btn,label #cancel{
+            position: absolute;
+            background: #042331;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        label #btn{
+            left: 40px;
+            top: 25px;
+            font-size: 35px;
+            color: white;
+            padding: 6px 12px;
+            transition: all .5s;
+        }
+        label #cancel{
+            z-index: 1111;
+            left: -195px;
+            top: 17px;
+            font-size: 30px;
+            color: #0a5275;
+            padding: 4px 9px;
+            transition: all .5s ease;
+        }
+        #check:checked ~ .sidebar{
+            left: 0;
+        }
+        #check:checked ~ label #btn{
+            left: 250px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        #check:checked ~ label #cancel{
+            left: 195px;
+        }
+        #check:checked ~ section{
+            margin-left: 250px;
+        }
+        @font-face {
+            font-family: VNI;
+            src: url(fonts/Vongdohl.ttf); }
+        .content2{
+            max-width: 1000px;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: baseline;
+            margin-top: 20px;
+            margin-left: 200px;
+            float: left;
+        }
+        .content2 .p1{
+            padding: 20px;
+            text-align: left;
+        }
+        .p1>p{
+            padding: 5px;
+            font-size: 25px;
+            color: #ffffff;
+        }
+        img{
+            padding: 35px;
+        }
+        .content3{
+            max-width: 1000px;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: baseline;
+            margin-top: 20px;
+            margin-left: 800px;
+            float: left;
+        }
+        .content3 .p1{
+            padding: 20px;
+            text-align: left;
+        }
+        .content4{
+            max-width: 1000px;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: baseline;
+            margin-top: 20px;
+            margin-left: 200px;
+            float: left;
+        }
+        .content4 .p1{
+            padding: 20px;
+            text-align: left;
+        }
+        .content5{
+            max-width: 1000px;
+            background-color: rgba(31, 27, 27, 0.5);
+            align-items: baseline;
+            margin-top: 20px;
+            margin-left: 800px;
+            float: left;
+        }
+        .content5 .p1{
+            padding: 20px;
+            text-align: left;
+        }
+        article{
+            background-size: 100% 100%;
+            background-image: url(img/2nd-section.jpg);
+            max-height: 12000px;
+        }        
+        footer {
+            height: 50px;
+            text-align: center;
+            background-color: #282b2f;
+            padding: 30px ;
+        }
+
+        footer .primary-button {
+            margin-bottom: 30px;
+        }
+
+        footer ul {
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+        }
+
+        footer ul li {
+            display: inline-block;
+            margin: 0px 4px;
+        }
+
+        footer ul li a {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            display: inline-block;
+            background-color: #ff7d27;
+            color: #282b2f;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.5s;
+            font-size: 17px;
+        }
+
+        footer ul li a:hover {
+            color: #282b2f;
+            background-color: #ff8e43;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: #fff;
+            margin-top: 15px;
+            color: #fff;
+            letter-spacing: 0.5px;
+            margin-bottom: 0px;
+        }
+
+        footer em {
+          color: #ff8e43;
+          font-weight: 600;
+          font-style: normal;
+        }  
+        @media (max-width: 1600px){
+            video{
+                position: relative;
+                margin-left: 250px;
+                width:800px;
+            }
+        }
+        @media (max-width: 1050px){
+            video{
+                position: relative;
+                margin-left:50px;
+                width:600px;
+            }
+        }
+        @media (max-width: 1650px){
+            article{
+                width: 100%;
+                height: 3500px;
+            }
+        }
+        @media (min-width: 860px)and (max-width: 1300px){
+            article{
+                width: 100%;
+                height: 3500px;
+            }
+            .content2{
+                margin-left: 50px;
+                width: 800px;
+            }
+            .content3{
+                margin-left: 50px;
+                width: 800px;
+            }
+            .content4{
+                margin-left: 50px;
+                width: 800px;
+            }
+            .content5 {
+                margin-left: 50px;
+                width: 800px;
+            }
+        }
+        @media (min-width: 660px)and (max-width: 860px){
+            article{
+                width: 100%;
+                height: 5500px;           
+            }
+            video{
+                position: relative;
+                margin-left: 45px;
+                width:500px;
+            }
+            .content2{
+                margin-left: 50px;
+                width: 500px;
+            }
+            .content3{
+                margin-left: 50px;
+                width: 500px;
+            }
+            .content4{
+                margin-left: 50px;
+                width: 500px;
+            }
+            .content5 {
+                margin-left: 50px;
+                width: 500px;
+            }
+        }
+        @media (min-width: 460px)and (max-width: 660px){
+            article{
+                width: 100%;
+                height: 5500px;
+            }
+            video{
+                position: relative;
+                margin-left: 45px;
+                width:400px;
+                
+            }
+            .content2{
+                margin-left: 50px;
+                width: 400px;
+            }
+            .content3{
+                margin-left: 50px;
+                width: 400px;
+            }
+            .content4{
+                margin-left: 50px;
+                width: 400px;
+            }
+            .content5 {
+                margin-left: 50px;
+                width: 400px;
+            }
+        }
+        @media (min-width: 260px)and (max-width: 460px){
+            article{
+                width: 100%;
+                height: 10000px;
+            }
+            video{
+                position: relative;
+                margin-left: 45px;
+                width:200px;
+            }
+            .content1 p{
+                font-size: 20px;
+            }
+            #VN{
+                font-size: 20px;
+            }
+            .content2{
+                margin-left: 50px;
+                width: 200px;
+            }
+            .content3{
+                margin-left: 50px;
+                width: 200px;
+            }
+            .content4{
+                margin-left: 50px;
+                width: 200px;
+            }
+            .content5 {
+                margin-left: 50px;
+                width: 200px;
+            }
+            #img{
+                width: 150px;
+                height: 200px;
+            }
+        }
+        @media (min-width: 160px)and (max-width: 260px){
+            article{
+                width: 100%;
+                height: 12000px;
+            }
+            video{
+                position: relative;
+                margin-left: 45px;
+                width:100px;
+            }
+            .content1 p{
+                font-size: 20px;
+            }
+            #VN{
+                font-size: 20px;
+            }
+            .content2{
+                margin-left: 30px;
+                width: 150px;
+            }
+            .content3{
+                margin-left: 30px;
+                width: 150px;
+            }
+            .content4{
+                margin-left: 30px;
+                width: 150px;
+            }
+            .content5 {
+                margin-left: 30px;
+                width: 150px;
+            }
+            #img{
+                width: 30px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <input type="checkbox" id="check">
+  <label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+  </label>
+  <div class="sidebar">
+      <ul>
+          <li><a href="index.html"><i class="fas fa-qrcode"></i>HomePage</a></li>
+          <li><a href="placestogo.html"><i class="fas fa-route"></i>Places to go</a></li>
+          <li><a href="bookatrip.html"><i class="far fa-question-circle"></i>Book A Trip</a></li>
+          <li><a href="plantrip.html"><i class="fas fa-sliders-h"></i>Plan to Trip</a></li>
+          <li><a href="contact.html"><i class="fas fa-blog"></i>Contact</a></li>
+          <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>Sign in / Sign up</a></li>
+      </ul>
+  </div>
+    <div class="container">
+        <div class="head">
+            <div class="content1"><p>PLACES TO GO TO <p id="VN">VIET NAM</p></p></div>
+                <video src="video/clip.mp4" autoplay style="border-radius: 50px;"></video>
+            </div>
+        </div>
+    </div>
+        <article>
+            <div class="content2">
+                <img id="img" align="left" src="img/sapa.jpg" height="400" width="300">
+                <div class="p1"> 
+                  <p style="color: #ff0000;font-size: 35px;">SAPA</p> <p> SaPa is one of the high-class dishes of Lao Cai, one of their dishes, one of the delicious dishes. Feng, literature, dark, good, monkey guide.<br>
+                      From the center of your city there can be.Sa Pa in the heart of Islam.<br>
+                      Sapa's remains can be structured by our fans and Frame fans, their emotional, health, career and emotional relationships.<br>
+                      Sapa has invaluable resources that are cool and fresh climate, with many nuances. Located at an average elevation of 1,500m - 1,800m.<br>
+                      Sapa's climate is more or less temperate in temperate country, with an average temperature of 15-18 ° C. From May to August, Sapa has a lot of rain.<br>
+                      At the end of the year, when winter comes, the temperature in Sapa can drop below 0 degrees, sometimes with snow.<br>
+                  </p>
+                </div>
+            </div>
+            <div class="content3">
+              <img id="img" align="left" src="img/muine.jpg" height="400" width="300">
+                <div class="p1"> 
+                  <p style="color: #ff0000;font-size: 35px;">MUI NE BEACH</p>
+                    <p>Mui Ne Tourism is one of the most beautiful and poetic marine eco-tourism destinations in Binh Thuan Province. Tourists to Mui Ne are not only attracted by the wild beauty of the nature but also attracted by the unique cuisine and the hospitality of the kind fishing village people. <p>
+                      Traveling to Mui Ne, you can stay in Mui Ne Center or stay in Phan Thiet City, both places have a lot of hotels and resorts for you to choose, here are suggestions for choosing a accommodation area. for you.
+                    </p>
+                </div>
+            </div>
+            <div class="content4">
+              <img id="img" align="left" src="img/vinhalong.jpg" height="400" width="300">
+                <div class="p1"> 
+                  <p style="color: #ff0000;font-size: 35px;">Ha Long Bay</p> <p>Ha Long Bay - Unesco has been repeatedly recognized as a natural heritage of the world with thousands of islands made by magnificent and vivid creation. Ha Long Bay has beautiful scenery, so this place is a very attractive tourist destination for domestic and international tourists.
+                  Ha Long Bay is a unique heritage because this place contains important traces of Earth's history of formation and development, 
+                  the cradle of the ancient Vietnamese people, and is a work of art. The great creation of nature with the presence of thousands of thousands of rocky islands, with many interesting caves gathering into a vibrant and mysterious world. Besides, Ha Long Bay is also a place of high biodiversity concentration with typical ecosystems along with thousands of extremely rich and diverse flora and fauna. This place is also associated with the cultural values ​​- the heroic history of the nation.
+                  </p>
+                </div>
+              </div>
+              <div class="content5">
+                <img id="img" align="left" src="img/nhatrang.PNG" height="400" width="300">
+                  <div class="p1"> 
+                    <p style="color: #ff0000;font-size: 35px;">Nha Trang Beach</p> <p>
+                    As one of the most famous "sea paradise" in Vietnam, Nha Trang is always a place that is remembered by both domestic and foreign tourists whenever it suddenly "craves" the blue and white sea. Let Traveloka tell you the tips of Nha Trang travel self-sufficient for you to freely travel for the "escape" to this beautiful coastal city!
+                    Nha Trang has the most perfect conditions to become a sea paradise, worthy of the top undeniable sea travel addresses in Vietnam. Not only long blue beaches, dozens of large and small islands remain untouched, Nha Trang is also an ideal destination for those who love culture - history when being the land of the Champa kingdom. flourishing in the past. What is better than a trip to Nha Trang for days craving for sea breeze and looking forward to immersing yourself in the blue water.
+                    </p>
+                  </div>
+                </div>
+              </article>
+</body>
+</html>
